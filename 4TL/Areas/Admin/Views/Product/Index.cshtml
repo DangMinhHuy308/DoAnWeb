@@ -1,0 +1,78 @@
+﻿@model IEnumerable<_4TL.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<style>
+    img {
+        width: 150px;
+    }
+</style>
+<table id="datatablesSimple">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Price)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.FeatureImage)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.Des)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.Year)
+</th>
+<th></th>
+</tr>
+</thead>
+<tfoot>
+    <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Office</th>
+        <th>Age</th>
+        <th>Start date</th>
+        <th>Salary</th>
+        <th>Salary</th>
+    </tr>
+</tfoot>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <img src="@item.FeatureImage" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Des)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td class="btn btn-primary">
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, null) |
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</tbody>
+</table>
